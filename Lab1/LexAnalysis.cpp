@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-#include "LexSync.h"
+#include "LexAnalysis.h"
 /**********************************************函数*****************************************************/
 
 /********************************************
@@ -17,7 +17,7 @@
 * token：用于存储单词
 * row：单词所在的行数
 *********************************************/
-void print(TokenCode code)
+void LexAnalysis::print(TokenCode code)
 {
 
 	switch (code)
@@ -143,7 +143,7 @@ bool isDigit(char digit)
 * token：用于存储单词
 * row：单词所在的行数
 *********************************************/
-void lexicalAnalysis(FILE* fp)
+void LexAnalysis::lexicalAnalysis(FILE* fp)
 {
 	char ch;			//用于存储从文件中获取的单个字符
 	while ((ch = fgetc(fp)) != EOF)	//未读取到文件尾，从文件中获取一个字符
@@ -271,7 +271,7 @@ void lexicalAnalysis(FILE* fp)
 			//未识别符号
 		default: code = TK_UNDEF;
 		}
-		print(code);				//打印词法分析结果
+		this->print(code);				//打印词法分析结果
 	}
 }
 
@@ -288,7 +288,8 @@ int main()
 			cout << "路径输入错误！" << endl;	//读取失败
 	}
 	cout << "/=***************************词法分析结果***************************=/" << endl;
-	lexicalAnalysis(fp);		//词法分析
+	LexAnalysis lexAnalysis = LexAnalysis();
+	lexAnalysis.lexicalAnalysis(fp);		//词法分析
 	fclose(fp);					//关闭文件
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);	//字体恢复原来的颜色
 	return 0;

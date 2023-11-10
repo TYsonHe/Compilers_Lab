@@ -2,6 +2,7 @@ int  program(int a,int b,int c)
 {
 	int i;
 	int j;
+	int if123;
 	i=0; 	
 	if(a>(b+c))
 	{

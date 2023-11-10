@@ -1,3 +1,8 @@
+/***********************************************
+* 词法分析器
+* 编译环境：Visual Studio 2022
+* by 何诗锟 康力 顾屹洋
+***********************************************/
 #pragma once
 #include <string>
 using namespace std;
@@ -55,3 +60,15 @@ const int MAX = 11;				//关键字数量
 int row = 1;					//记录字符所在的行数
 string token = "";				//用于存储单词
 char  keyWord[][7] = { "void","main","int","while","if","else","return" };	//存储关键词
+
+class LexAnalysis
+{
+
+public:
+
+	// 构造函数
+	LexAnalysis() = default;
+	// 成员函数
+	void print(TokenCode code);
+	void lexicalAnalysis(FILE* fp);
+};
