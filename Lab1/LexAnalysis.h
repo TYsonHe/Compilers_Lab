@@ -4,6 +4,9 @@
 * by 何诗锟 康力 顾屹洋
 ***********************************************/
 #pragma once
+#include <iostream>
+#include <string>
+#include <Windows.h>
 #include <string>
 using namespace std;
 /* 单词编码 */
@@ -54,13 +57,6 @@ enum TokenCode
 	TK_IDENT
 };
 
-/******************************************全局变量*****************************************************/
-TokenCode code = TK_UNDEF;		//记录单词的种别码
-const int MAX = 11;				//关键字数量
-int row = 1;					//记录字符所在的行数
-string token = "";				//用于存储单词
-char  keyWord[][7] = { "void","main","int","while","if","else","return" };	//存储关键词
-
 class LexAnalysis
 {
 
@@ -72,3 +68,10 @@ public:
 	void print(TokenCode code);
 	void lexicalAnalysis(FILE* fp);
 };
+
+// 全局变量
+extern TokenCode code;
+extern const int MAX;
+extern int row;
+extern string token;
+extern char  keyWord[][7];
