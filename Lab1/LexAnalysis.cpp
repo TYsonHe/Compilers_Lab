@@ -9,6 +9,14 @@
 /**********************************************函数*****************************************************/
 
 /********************************************
+* 功能：消除文件中的注释
+* code：单词对应的种别码
+* token：用于存储单词
+* row：单词所在的行数
+*********************************************/
+
+
+/********************************************
 * 功能：打印词法分析的结果
 * code：单词对应的种别码
 * token：用于存储单词
@@ -51,10 +59,8 @@ void LexAnalysis::print(TokenCode code)
 		/* 分隔符 */
 	case TK_OPENPA:	//(左圆括号
 	case TK_CLOSEPA:	//)右圆括号
-	case TK_OPENBR:	//[左中括号
-	case TK_CLOSEBR:	//]右中括号
-	case TK_BEGIN:	//{左大括号
-	case TK_END:	//}右大括号
+	case TK_BEGIN_LEFT:	//{左大括号
+	case TK_END_RIGHT:	//}右大括号
 	case TK_COMMA:	//,逗号
 	case TK_SEMOCOLOM:	//;分号
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);	//运算符和分隔符为绿色
@@ -62,18 +68,12 @@ void LexAnalysis::print(TokenCode code)
 
 		/* 常量 */
 	case TK_INT:	//整型常量
-	case TK_DOUBLE:	//浮点型常量
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN);	//常量为黄色
-		if (token.find('.') == token.npos)
-			cout << '(' << code << ',' << atoi(token.c_str()) << ")" << endl;						//单词为整型
-		else
-			cout << '(' << code << ',' << atof(token.c_str()) << ")" << endl;							//单词为浮点型
-		return;
-		break;
 		/* 标识符 */
 	case TK_IDENT:
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY);	//关键字为灰色
 		break;
+		/* 结束符 */
+	case TK_END:   //#井号
 	default:
 		break;
 	}
@@ -143,7 +143,7 @@ bool isDigit(char digit)
 void LexAnalysis::lexicalAnalysis(FILE* fp)
 {
 	char ch;			//用于存储从文件中获取的单个字符
-	while ((ch = fgetc(fp)) != EOF)	//未读取到文件尾，从文件中获取一个字符
+	while ((ch = fgetc(fp)) != '#')	//未读取到文件尾，从文件中获取一个字符
 	{
 		token = ch;									//将获取的字符存入token中
 		if (ch == ' ' || ch == '\t' || ch == '\n')	//忽略空格、Tab和回车
@@ -151,6 +151,42 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 			if (ch == '\n')							//遇到换行符，记录行数的row加1
 				row++;
 			continue;								//继续执行循环
+		}
+		// 处理单行和多行注释
+		else if (ch == '/')
+		{
+			ch = fgetc(fp);//再读一个
+			token = "";
+			if(ch == '/') //再读一个是'/' 单行注释
+			{
+				token+="//";
+				while ((ch = fgetc(fp)) != '\n')
+					;//一直读到换行
+				row++;
+				code = TK_SINGAL_LINE_ANNO;
+			}
+			else if (ch == '*')  //再读一个是'*' 多行注释
+			{
+				token += "/*";
+				while ((ch = fgetc(fp)) != '*')
+				{
+					if (ch == '\n')
+						row++;
+				}//一直读到下一个 *号
+				if ((ch = fgetc(fp)) == '/') //再下一个是'/'号
+				{
+					token += " */";
+					code = TK_MUTI_LINE_ANNO;
+				}
+			}
+			//都不是，认为是除号
+			else
+			{
+				code = TK_DIVIDE;
+				//文件指针后退一个字节，即重新读取上述单词后的第一个字符
+				fseek(fp, -1L, SEEK_CUR);
+			}
+
 		}
 		else if (isLetter(ch))			//以字母开头，关键字或标识符
 		{
@@ -169,29 +205,13 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 		}
 		else if (isDigit(ch))	//无符号常数以数字开头
 		{
-			int isdouble = 0;	//标记是否为浮点数
 			token = "";			//token初始化
 			while (isDigit(ch))	//当前获取到的字符为数字
 			{
 				token.push_back(ch);		//读取数字，将其存入token中
 				ch = fgetc(fp);				//从文件中获取下一个字符
-				//该单词中第一次出现小数点
-				if (ch == '.' && isdouble == 0)
-				{
-					//小数点下一位是数字
-					if (isDigit(fgetc(fp)))
-					{
-						isdouble = 1;		//标记该常数中已经出现过小数点
-						fseek(fp, -1L, SEEK_CUR);		//将超前读取的小数点后一位重新读取	
-						token.push_back(ch);			//将小数点入token中
-						ch = fgetc(fp);				//读取小数点后的下一位数字
-					}
-				}
 			}
-			if (isdouble == 1)
-				code = TK_DOUBLE;	//单词为浮点型
-			else
-				code = TK_INT;				//单词为整型
+			code = TK_INT;				//单词为整型
 			//文件指针后退一个字节，即重新读取常数后的第一个字符
 			fseek(fp, -1L, SEEK_CUR);
 		}
@@ -203,8 +223,6 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 		case '-': code = TK_MINUS;		//-减号
 			break;
 		case '*': code = TK_STAR;		//*乘号		
-			break;
-		case '/': code = TK_DIVIDE;		//除号
 			break;
 		case '=':
 		{
@@ -253,13 +271,9 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 			break;
 		case ')': code = TK_CLOSEPA;	//)右圆括号
 			break;
-		case '[': code = TK_OPENBR;		//[左中括号
+		case '{': code = TK_BEGIN_LEFT;		//{左大括号
 			break;
-		case ']': code = TK_CLOSEBR;	//]右中括号
-			break;
-		case '{': code = TK_BEGIN;		//{左大括号
-			break;
-		case '}': code = TK_END;		//}右大括号
+		case '}': code = TK_END_RIGHT;		//}右大括号
 			break;
 		case ',': code = TK_COMMA;		//,逗号
 			break;

@@ -15,14 +15,15 @@ enum TokenCode
 	/*未定义*/
 	TK_UNDEF = 0,
 
+	/* 注释符 */
+	TK_SINGAL_LINE_ANNO, //单行注释
+	TK_MUTI_LINE_ANNO,   //多行注释
+
 	/* 关键字 */
 	KW_VOID,	//void关键字
 	KW_MAIN,	//main关键字
 	KW_INT,		//int关键字
-	KW_DOUBLE,	//double关键字
-	KW_FOR,		//for关键字
 	KW_WHILE,	//while关键字
-	KW_CASE,	//case关键字
 	KW_IF,		//if关键字
 	KW_ELSE,	//else关键字
 	KW_RETURN,	//return关键字
@@ -42,19 +43,19 @@ enum TokenCode
 	/* 分隔符 */
 	TK_OPENPA,	//(左圆括号
 	TK_CLOSEPA,	//)右圆括号
-	TK_OPENBR,	//[左中括号
-	TK_CLOSEBR,	//]右中括号
-	TK_BEGIN,	//{左大括号
-	TK_END,		//}右大括号
+	TK_BEGIN_LEFT,	//{左大括号
+	TK_END_RIGHT,	//}右大括号
 	TK_COMMA,	//,逗号
 	TK_SEMOCOLOM,	//;分号
 
 	/* 常量 */
 	TK_INT,		//整型常量
-	TK_DOUBLE,	//浮点型常量
 
 	/* 标识符 */
-	TK_IDENT
+	TK_IDENT,
+
+	/* 结束符 */
+	TK_END
 };
 
 class LexAnalysis

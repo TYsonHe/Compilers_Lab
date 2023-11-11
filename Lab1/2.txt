@@ -1,5 +1,8 @@
 int  program(int a,int b,int c)
 {
+	// 这是注释
+	/* 这是多行注释
+		多行注释 */
 	int i;
 	int j;
 	int if123;
