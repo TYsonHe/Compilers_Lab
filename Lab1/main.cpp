@@ -4,7 +4,7 @@ using namespace std;
 
 /******************************************全局变量*****************************************************/
 TokenCode code = TK_UNDEF;		//记录单词的种别码
-const int MAX = 11;				//关键字数量
+const int MAX = 7;				//关键字数量
 int row = 1;					//记录字符所在的行数
 string token = "";				//用于存储单词
 char  keyWord[][7] = { "void","main","int","while","if","else","return" };	//存储关键词

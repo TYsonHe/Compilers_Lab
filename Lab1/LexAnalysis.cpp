@@ -266,6 +266,17 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 			}
 		}
 		break;
+		case '!':
+		{
+			ch = fgetc(fp);
+			if (ch == '=')
+			{
+				token.push_back(ch);
+				code = TK_NEQ;         //!=ºÅ
+			}
+			else
+				fseek(fp, -1L, SEEK_CUR);
+		}
 		/*·Ö½ç·û*/
 		case '(': code = TK_OPENPA;		//(×óÔ²À¨ºÅ
 			break;

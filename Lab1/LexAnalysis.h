@@ -39,6 +39,7 @@ enum TokenCode
 	TK_LEQ,		//<=小于等于号
 	TK_GT,		//>大于号
 	TK_GEQ,		//>=大于等于号
+	TK_NEQ,     //!= 不等于号
 
 	/* 分隔符 */
 	TK_OPENPA,	//(左圆括号

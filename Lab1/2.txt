@@ -20,5 +20,7 @@ int  program(int a,int b,int c)
 	{
 		i=j*2;
 	}
+	while(i!=12)
+		i+=1;
 	return i;
 }#
