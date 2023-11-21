@@ -103,9 +103,9 @@ bool isKey(string token)
 int  getKeyID(string token)
 {
 	for (int i = 0; i < MAX; i++)
-	{	//关键字的内码值为keyWord数组中对应的下标加1
+	{	//关键字的内码值为keyWord数组中对应的下标加3
 		if (token.compare(keyWord[i]) == 0)
-			return i + 1;
+			return i + 3;
 	}
 	return -1;
 }
