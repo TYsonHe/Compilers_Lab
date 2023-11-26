@@ -31,6 +31,7 @@ void LexAnalysis::print(TokenCode code)
 	case TK_UNDEF:
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);	//未识别的符号为红色
 		cout << '(' << code << ',' << token << ")" << "未识别的符号在第" << row << "行。" << endl;
+		passLex = false;	//词法分析未通过
 		return;
 		break;
 		/*关键字*/
@@ -78,6 +79,8 @@ void LexAnalysis::print(TokenCode code)
 		break;
 	}
 	cout << '(' << code << ',' << token << ")" << endl;
+	//将词法分析结果存储在lexResults中
+	lexResults.push_back(LexResult{ code,token });
 }
 
 /********************************************
@@ -145,8 +148,9 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 	char ch;			//用于存储从文件中获取的单个字符
 	while ((ch = fgetc(fp)) != '#')	//未读取到文件尾，从文件中获取一个字符
 	{
+		// cout << ch << int(ch); Sleep(2000);
 		token = ch;									//将获取的字符存入token中
-		if (ch == ' ' || ch == '\t' || ch == '\n')	//忽略空格、Tab和回车
+		if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r')	//忽略空格、Tab和回车
 		{
 			if (ch == '\n')							//遇到换行符，记录行数的row加1
 				row++;
@@ -157,9 +161,9 @@ void LexAnalysis::lexicalAnalysis(FILE* fp)
 		{
 			ch = fgetc(fp);//再读一个
 			token = "";
-			if(ch == '/') //再读一个是'/' 单行注释
+			if (ch == '/') //再读一个是'/' 单行注释
 			{
-				token+="//";
+				token += "//";
 				while ((ch = fgetc(fp)) != '\n')
 					;//一直读到换行
 				row++;

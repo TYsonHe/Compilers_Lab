@@ -129,9 +129,15 @@
   <ItemGroup>
     <ClCompile Include="LexAnalysis.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SynAnalysis.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LexAnalysis.h" />
+    <ClInclude Include="SynAnalysis.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="C:\Users\86180\Desktop\BigHW1\Grammar.txt" />
+    <Text Include="C:\Users\86180\Desktop\BigHW1\ItemSet.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

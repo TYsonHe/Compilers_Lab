@@ -1,0 +1,88 @@
+# 类C的文法构建
+# 形式上用 X -> Y1 Y2 ... Yn 表示，并在前面注释对应的文法规则编号
+# 使用$代表空串
+
+# 终结符, 以@开头
+@ id num void int if else while return + - * / ( ) { } , ; < > <= >= == != = $ #
+
+# 程序总入口部分
+000: S -> Program
+001: Program -> Type ID ( FormalParameter ) StatementBlock
+
+# 参数的构建文法
+010: FormalParameter -> void
+011: FormalParameter -> FormalParameterList
+012: FormalParameterList -> Parameter MoreParameter
+013: MoreParameter -> $
+014: MoreParameter -> , Parameter MoreParameter
+015: Parameter -> int ID
+
+# 定义Type
+020: Type -> int
+021: Type -> void
+
+# 定义ID，这里的id是一个终结符，为词法分析中的标识符
+030: ID -> id
+
+# 定义语句块结构与内部声明
+040: StatementBlock -> { InternalDeclaration StatementList }
+041: InternalDeclaration -> $
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration
+043: MoreInternalDeclaration -> $
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration
+045: InternalVariableDeclaration -> int ID ;
+046: StatementList -> Statement StatementList
+047: StatementList -> $
+
+# 定义语句
+051: Statement -> AssignmentStatement
+052: Statement -> IfStatement
+053: Statement -> WhileStatement
+054: Statement -> ReturnStatement
+
+# 定义赋值语句
+060: AssignmentStatement -> ID = Expression ;
+
+# 定义if语句
+070: IfStatement -> if ( Expression ) StatementBlock
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock
+
+# 定义while语句
+080: WhileStatement -> while ( Expression ) StatementBlock
+
+# 定义return语句
+090: ReturnStatement -> return Expression ;
+091: ReturnStatement -> return ;
+
+# 定义表达式
+100: Expression -> AdditiveExpression MoreExpression
+101: MoreExpression -> $
+102: MoreExpression -> OP AdditiveExpression MoreExpression
+
+# 定义OP
+110: OP -> ==
+111: OP -> !=
+112: OP -> >
+113: OP -> <
+114: OP -> >=
+115: OP -> <=
+
+# 定义加法表达式
+120: AdditiveExpression -> Term MoreTerm
+121: MoreTerm -> $
+122: MoreTerm -> + Term MoreTerm
+123: MoreTerm -> - Term MoreTerm
+
+# 定义乘法表达式
+130: Term -> Factor MoreFactor
+131: MoreFactor -> $
+132: MoreFactor -> * Factor MoreFactor
+133: MoreFactor -> / Factor MoreFactor
+
+# 定义因子
+140: Factor -> ( Expression )
+141: Factor -> ID
+142: Factor -> NUM
+
+# 定义数字
+150: NUM -> num

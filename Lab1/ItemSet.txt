@@ -1,0 +1,2707 @@
+I0:
+000: S -> . Program lookahead: #
+001: Program -> . Type ID ( FormalParameter ) StatementBlock lookahead: #
+020: Type -> . int lookahead: id
+021: Type -> . void lookahead: id
+
+I1:
+021: Type -> void . lookahead: id
+
+I2:
+020: Type -> int . lookahead: id
+
+I3:
+000: S -> Program . lookahead: #
+
+I4:
+001: Program -> Type . ID ( FormalParameter ) StatementBlock lookahead: #
+030: ID -> . id lookahead: (
+
+I5:
+030: ID -> id . lookahead: (
+
+I6:
+001: Program -> Type ID . ( FormalParameter ) StatementBlock lookahead: #
+
+I7:
+001: Program -> Type ID ( . FormalParameter ) StatementBlock lookahead: #
+010: FormalParameter -> . void lookahead: )
+011: FormalParameter -> . FormalParameterList lookahead: )
+012: FormalParameterList -> . Parameter MoreParameter lookahead: )
+015: Parameter -> . int ID lookahead: ,
+015: Parameter -> . int ID lookahead: )
+
+I8:
+010: FormalParameter -> void . lookahead: )
+
+I9:
+015: Parameter -> int . ID lookahead: ,
+015: Parameter -> int . ID lookahead: )
+030: ID -> . id lookahead: ,
+030: ID -> . id lookahead: )
+
+I10:
+001: Program -> Type ID ( FormalParameter . ) StatementBlock lookahead: #
+
+I11:
+011: FormalParameter -> FormalParameterList . lookahead: )
+
+I12:
+012: FormalParameterList -> Parameter . MoreParameter lookahead: )
+013: MoreParameter -> . lookahead: )
+014: MoreParameter -> . , Parameter MoreParameter lookahead: )
+
+I13:
+030: ID -> id . lookahead: ,
+030: ID -> id . lookahead: )
+
+I14:
+015: Parameter -> int ID . lookahead: ,
+015: Parameter -> int ID . lookahead: )
+
+I15:
+001: Program -> Type ID ( FormalParameter ) . StatementBlock lookahead: #
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: #
+
+I16:
+014: MoreParameter -> , . Parameter MoreParameter lookahead: )
+015: Parameter -> . int ID lookahead: ,
+015: Parameter -> . int ID lookahead: )
+
+I17:
+012: FormalParameterList -> Parameter MoreParameter . lookahead: )
+
+I18:
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: #
+041: InternalDeclaration -> . lookahead: id
+041: InternalDeclaration -> . lookahead: if
+041: InternalDeclaration -> . lookahead: while
+041: InternalDeclaration -> . lookahead: return
+041: InternalDeclaration -> . lookahead: }
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: id
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: if
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: while
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: return
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: }
+045: InternalVariableDeclaration -> . int ID ; lookahead: int
+045: InternalVariableDeclaration -> . int ID ; lookahead: id
+045: InternalVariableDeclaration -> . int ID ; lookahead: if
+045: InternalVariableDeclaration -> . int ID ; lookahead: while
+045: InternalVariableDeclaration -> . int ID ; lookahead: return
+045: InternalVariableDeclaration -> . int ID ; lookahead: }
+
+I19:
+001: Program -> Type ID ( FormalParameter ) StatementBlock . lookahead: #
+
+I20:
+014: MoreParameter -> , Parameter . MoreParameter lookahead: )
+013: MoreParameter -> . lookahead: )
+014: MoreParameter -> . , Parameter MoreParameter lookahead: )
+
+I21:
+045: InternalVariableDeclaration -> int . ID ; lookahead: int
+045: InternalVariableDeclaration -> int . ID ; lookahead: id
+045: InternalVariableDeclaration -> int . ID ; lookahead: if
+045: InternalVariableDeclaration -> int . ID ; lookahead: while
+045: InternalVariableDeclaration -> int . ID ; lookahead: return
+045: InternalVariableDeclaration -> int . ID ; lookahead: }
+030: ID -> . id lookahead: ;
+
+I22:
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: #
+046: StatementList -> . Statement StatementList lookahead: }
+047: StatementList -> . lookahead: }
+051: Statement -> . AssignmentStatement lookahead: id
+051: Statement -> . AssignmentStatement lookahead: if
+051: Statement -> . AssignmentStatement lookahead: while
+051: Statement -> . AssignmentStatement lookahead: return
+051: Statement -> . AssignmentStatement lookahead: }
+052: Statement -> . IfStatement lookahead: id
+052: Statement -> . IfStatement lookahead: if
+052: Statement -> . IfStatement lookahead: while
+052: Statement -> . IfStatement lookahead: return
+052: Statement -> . IfStatement lookahead: }
+053: Statement -> . WhileStatement lookahead: id
+053: Statement -> . WhileStatement lookahead: if
+053: Statement -> . WhileStatement lookahead: while
+053: Statement -> . WhileStatement lookahead: return
+053: Statement -> . WhileStatement lookahead: }
+054: Statement -> . ReturnStatement lookahead: id
+054: Statement -> . ReturnStatement lookahead: if
+054: Statement -> . ReturnStatement lookahead: while
+054: Statement -> . ReturnStatement lookahead: return
+054: Statement -> . ReturnStatement lookahead: }
+060: AssignmentStatement -> . ID = Expression ; lookahead: id
+060: AssignmentStatement -> . ID = Expression ; lookahead: if
+060: AssignmentStatement -> . ID = Expression ; lookahead: while
+060: AssignmentStatement -> . ID = Expression ; lookahead: return
+060: AssignmentStatement -> . ID = Expression ; lookahead: }
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: id
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: if
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: while
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: return
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: }
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: }
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: id
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: if
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: while
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: return
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: }
+090: ReturnStatement -> . return Expression ; lookahead: id
+091: ReturnStatement -> . return ; lookahead: id
+090: ReturnStatement -> . return Expression ; lookahead: if
+091: ReturnStatement -> . return ; lookahead: if
+090: ReturnStatement -> . return Expression ; lookahead: while
+091: ReturnStatement -> . return ; lookahead: while
+090: ReturnStatement -> . return Expression ; lookahead: return
+091: ReturnStatement -> . return ; lookahead: return
+090: ReturnStatement -> . return Expression ; lookahead: }
+091: ReturnStatement -> . return ; lookahead: }
+030: ID -> . id lookahead: =
+
+I23:
+042: InternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: id
+042: InternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: if
+042: InternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: while
+042: InternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: return
+042: InternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: }
+043: MoreInternalDeclaration -> . lookahead: id
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: id
+043: MoreInternalDeclaration -> . lookahead: if
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: if
+043: MoreInternalDeclaration -> . lookahead: while
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: while
+043: MoreInternalDeclaration -> . lookahead: return
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: return
+043: MoreInternalDeclaration -> . lookahead: }
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: }
+045: InternalVariableDeclaration -> . int ID ; lookahead: int
+045: InternalVariableDeclaration -> . int ID ; lookahead: id
+045: InternalVariableDeclaration -> . int ID ; lookahead: if
+045: InternalVariableDeclaration -> . int ID ; lookahead: while
+045: InternalVariableDeclaration -> . int ID ; lookahead: return
+045: InternalVariableDeclaration -> . int ID ; lookahead: }
+
+I24:
+014: MoreParameter -> , Parameter MoreParameter . lookahead: )
+
+I25:
+030: ID -> id . lookahead: ;
+
+I26:
+045: InternalVariableDeclaration -> int ID . ; lookahead: int
+045: InternalVariableDeclaration -> int ID . ; lookahead: id
+045: InternalVariableDeclaration -> int ID . ; lookahead: if
+045: InternalVariableDeclaration -> int ID . ; lookahead: while
+045: InternalVariableDeclaration -> int ID . ; lookahead: return
+045: InternalVariableDeclaration -> int ID . ; lookahead: }
+
+I27:
+030: ID -> id . lookahead: =
+
+I28:
+070: IfStatement -> if . ( Expression ) StatementBlock lookahead: id
+071: IfStatement -> if . ( Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> if . ( Expression ) StatementBlock lookahead: if
+071: IfStatement -> if . ( Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> if . ( Expression ) StatementBlock lookahead: while
+071: IfStatement -> if . ( Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> if . ( Expression ) StatementBlock lookahead: return
+071: IfStatement -> if . ( Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> if . ( Expression ) StatementBlock lookahead: }
+071: IfStatement -> if . ( Expression ) StatementBlock else StatementBlock lookahead: }
+
+I29:
+080: WhileStatement -> while . ( Expression ) StatementBlock lookahead: id
+080: WhileStatement -> while . ( Expression ) StatementBlock lookahead: if
+080: WhileStatement -> while . ( Expression ) StatementBlock lookahead: while
+080: WhileStatement -> while . ( Expression ) StatementBlock lookahead: return
+080: WhileStatement -> while . ( Expression ) StatementBlock lookahead: }
+
+I30:
+090: ReturnStatement -> return . Expression ; lookahead: id
+091: ReturnStatement -> return . ; lookahead: id
+090: ReturnStatement -> return . Expression ; lookahead: if
+091: ReturnStatement -> return . ; lookahead: if
+090: ReturnStatement -> return . Expression ; lookahead: while
+091: ReturnStatement -> return . ; lookahead: while
+090: ReturnStatement -> return . Expression ; lookahead: return
+091: ReturnStatement -> return . ; lookahead: return
+090: ReturnStatement -> return . Expression ; lookahead: }
+091: ReturnStatement -> return . ; lookahead: }
+100: Expression -> . AdditiveExpression MoreExpression lookahead: ;
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: ;
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I31:
+060: AssignmentStatement -> ID . = Expression ; lookahead: id
+060: AssignmentStatement -> ID . = Expression ; lookahead: if
+060: AssignmentStatement -> ID . = Expression ; lookahead: while
+060: AssignmentStatement -> ID . = Expression ; lookahead: return
+060: AssignmentStatement -> ID . = Expression ; lookahead: }
+
+I32:
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: #
+
+I33:
+046: StatementList -> Statement . StatementList lookahead: }
+046: StatementList -> . Statement StatementList lookahead: }
+047: StatementList -> . lookahead: }
+051: Statement -> . AssignmentStatement lookahead: id
+051: Statement -> . AssignmentStatement lookahead: if
+051: Statement -> . AssignmentStatement lookahead: while
+051: Statement -> . AssignmentStatement lookahead: return
+051: Statement -> . AssignmentStatement lookahead: }
+052: Statement -> . IfStatement lookahead: id
+052: Statement -> . IfStatement lookahead: if
+052: Statement -> . IfStatement lookahead: while
+052: Statement -> . IfStatement lookahead: return
+052: Statement -> . IfStatement lookahead: }
+053: Statement -> . WhileStatement lookahead: id
+053: Statement -> . WhileStatement lookahead: if
+053: Statement -> . WhileStatement lookahead: while
+053: Statement -> . WhileStatement lookahead: return
+053: Statement -> . WhileStatement lookahead: }
+054: Statement -> . ReturnStatement lookahead: id
+054: Statement -> . ReturnStatement lookahead: if
+054: Statement -> . ReturnStatement lookahead: while
+054: Statement -> . ReturnStatement lookahead: return
+054: Statement -> . ReturnStatement lookahead: }
+060: AssignmentStatement -> . ID = Expression ; lookahead: id
+060: AssignmentStatement -> . ID = Expression ; lookahead: if
+060: AssignmentStatement -> . ID = Expression ; lookahead: while
+060: AssignmentStatement -> . ID = Expression ; lookahead: return
+060: AssignmentStatement -> . ID = Expression ; lookahead: }
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: id
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: if
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: while
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: return
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: }
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: }
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: id
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: if
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: while
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: return
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: }
+090: ReturnStatement -> . return Expression ; lookahead: id
+091: ReturnStatement -> . return ; lookahead: id
+090: ReturnStatement -> . return Expression ; lookahead: if
+091: ReturnStatement -> . return ; lookahead: if
+090: ReturnStatement -> . return Expression ; lookahead: while
+091: ReturnStatement -> . return ; lookahead: while
+090: ReturnStatement -> . return Expression ; lookahead: return
+091: ReturnStatement -> . return ; lookahead: return
+090: ReturnStatement -> . return Expression ; lookahead: }
+091: ReturnStatement -> . return ; lookahead: }
+030: ID -> . id lookahead: =
+
+I34:
+051: Statement -> AssignmentStatement . lookahead: id
+051: Statement -> AssignmentStatement . lookahead: if
+051: Statement -> AssignmentStatement . lookahead: while
+051: Statement -> AssignmentStatement . lookahead: return
+051: Statement -> AssignmentStatement . lookahead: }
+
+I35:
+052: Statement -> IfStatement . lookahead: id
+052: Statement -> IfStatement . lookahead: if
+052: Statement -> IfStatement . lookahead: while
+052: Statement -> IfStatement . lookahead: return
+052: Statement -> IfStatement . lookahead: }
+
+I36:
+053: Statement -> WhileStatement . lookahead: id
+053: Statement -> WhileStatement . lookahead: if
+053: Statement -> WhileStatement . lookahead: while
+053: Statement -> WhileStatement . lookahead: return
+053: Statement -> WhileStatement . lookahead: }
+
+I37:
+054: Statement -> ReturnStatement . lookahead: id
+054: Statement -> ReturnStatement . lookahead: if
+054: Statement -> ReturnStatement . lookahead: while
+054: Statement -> ReturnStatement . lookahead: return
+054: Statement -> ReturnStatement . lookahead: }
+
+I38:
+044: MoreInternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: id
+044: MoreInternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: if
+044: MoreInternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: while
+044: MoreInternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: return
+044: MoreInternalDeclaration -> InternalVariableDeclaration . MoreInternalDeclaration lookahead: }
+043: MoreInternalDeclaration -> . lookahead: id
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: id
+043: MoreInternalDeclaration -> . lookahead: if
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: if
+043: MoreInternalDeclaration -> . lookahead: while
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: while
+043: MoreInternalDeclaration -> . lookahead: return
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: return
+043: MoreInternalDeclaration -> . lookahead: }
+044: MoreInternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: }
+045: InternalVariableDeclaration -> . int ID ; lookahead: int
+045: InternalVariableDeclaration -> . int ID ; lookahead: id
+045: InternalVariableDeclaration -> . int ID ; lookahead: if
+045: InternalVariableDeclaration -> . int ID ; lookahead: while
+045: InternalVariableDeclaration -> . int ID ; lookahead: return
+045: InternalVariableDeclaration -> . int ID ; lookahead: }
+
+I39:
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: id
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: if
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: while
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: return
+042: InternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: }
+
+I40:
+045: InternalVariableDeclaration -> int ID ; . lookahead: int
+045: InternalVariableDeclaration -> int ID ; . lookahead: id
+045: InternalVariableDeclaration -> int ID ; . lookahead: if
+045: InternalVariableDeclaration -> int ID ; . lookahead: while
+045: InternalVariableDeclaration -> int ID ; . lookahead: return
+045: InternalVariableDeclaration -> int ID ; . lookahead: }
+
+I41:
+070: IfStatement -> if ( . Expression ) StatementBlock lookahead: id
+071: IfStatement -> if ( . Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> if ( . Expression ) StatementBlock lookahead: if
+071: IfStatement -> if ( . Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> if ( . Expression ) StatementBlock lookahead: while
+071: IfStatement -> if ( . Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> if ( . Expression ) StatementBlock lookahead: return
+071: IfStatement -> if ( . Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> if ( . Expression ) StatementBlock lookahead: }
+071: IfStatement -> if ( . Expression ) StatementBlock else StatementBlock lookahead: }
+100: Expression -> . AdditiveExpression MoreExpression lookahead: )
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I42:
+080: WhileStatement -> while ( . Expression ) StatementBlock lookahead: id
+080: WhileStatement -> while ( . Expression ) StatementBlock lookahead: if
+080: WhileStatement -> while ( . Expression ) StatementBlock lookahead: while
+080: WhileStatement -> while ( . Expression ) StatementBlock lookahead: return
+080: WhileStatement -> while ( . Expression ) StatementBlock lookahead: }
+100: Expression -> . AdditiveExpression MoreExpression lookahead: )
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I43:
+030: ID -> id . lookahead: *
+030: ID -> id . lookahead: /
+030: ID -> id . lookahead: +
+030: ID -> id . lookahead: -
+030: ID -> id . lookahead: ==
+030: ID -> id . lookahead: !=
+030: ID -> id . lookahead: >
+030: ID -> id . lookahead: <
+030: ID -> id . lookahead: >=
+030: ID -> id . lookahead: <=
+030: ID -> id . lookahead: ;
+
+I44:
+150: NUM -> num . lookahead: *
+150: NUM -> num . lookahead: /
+150: NUM -> num . lookahead: +
+150: NUM -> num . lookahead: -
+150: NUM -> num . lookahead: ==
+150: NUM -> num . lookahead: !=
+150: NUM -> num . lookahead: >
+150: NUM -> num . lookahead: <
+150: NUM -> num . lookahead: >=
+150: NUM -> num . lookahead: <=
+150: NUM -> num . lookahead: ;
+
+I45:
+140: Factor -> ( . Expression ) lookahead: *
+140: Factor -> ( . Expression ) lookahead: /
+140: Factor -> ( . Expression ) lookahead: +
+140: Factor -> ( . Expression ) lookahead: -
+140: Factor -> ( . Expression ) lookahead: ==
+140: Factor -> ( . Expression ) lookahead: !=
+140: Factor -> ( . Expression ) lookahead: >
+140: Factor -> ( . Expression ) lookahead: <
+140: Factor -> ( . Expression ) lookahead: >=
+140: Factor -> ( . Expression ) lookahead: <=
+140: Factor -> ( . Expression ) lookahead: ;
+100: Expression -> . AdditiveExpression MoreExpression lookahead: )
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I46:
+091: ReturnStatement -> return ; . lookahead: id
+091: ReturnStatement -> return ; . lookahead: if
+091: ReturnStatement -> return ; . lookahead: while
+091: ReturnStatement -> return ; . lookahead: return
+091: ReturnStatement -> return ; . lookahead: }
+
+I47:
+141: Factor -> ID . lookahead: *
+141: Factor -> ID . lookahead: /
+141: Factor -> ID . lookahead: +
+141: Factor -> ID . lookahead: -
+141: Factor -> ID . lookahead: ==
+141: Factor -> ID . lookahead: !=
+141: Factor -> ID . lookahead: >
+141: Factor -> ID . lookahead: <
+141: Factor -> ID . lookahead: >=
+141: Factor -> ID . lookahead: <=
+141: Factor -> ID . lookahead: ;
+
+I48:
+090: ReturnStatement -> return Expression . ; lookahead: id
+090: ReturnStatement -> return Expression . ; lookahead: if
+090: ReturnStatement -> return Expression . ; lookahead: while
+090: ReturnStatement -> return Expression . ; lookahead: return
+090: ReturnStatement -> return Expression . ; lookahead: }
+
+I49:
+100: Expression -> AdditiveExpression . MoreExpression lookahead: ;
+101: MoreExpression -> . lookahead: ;
+102: MoreExpression -> . OP AdditiveExpression MoreExpression lookahead: ;
+110: OP -> . == lookahead: (
+110: OP -> . == lookahead: id
+110: OP -> . == lookahead: num
+111: OP -> . != lookahead: (
+111: OP -> . != lookahead: id
+111: OP -> . != lookahead: num
+112: OP -> . > lookahead: (
+112: OP -> . > lookahead: id
+112: OP -> . > lookahead: num
+113: OP -> . < lookahead: (
+113: OP -> . < lookahead: id
+113: OP -> . < lookahead: num
+114: OP -> . >= lookahead: (
+114: OP -> . >= lookahead: id
+114: OP -> . >= lookahead: num
+115: OP -> . <= lookahead: (
+115: OP -> . <= lookahead: id
+115: OP -> . <= lookahead: num
+
+I50:
+120: AdditiveExpression -> Term . MoreTerm lookahead: ==
+120: AdditiveExpression -> Term . MoreTerm lookahead: !=
+120: AdditiveExpression -> Term . MoreTerm lookahead: >
+120: AdditiveExpression -> Term . MoreTerm lookahead: <
+120: AdditiveExpression -> Term . MoreTerm lookahead: >=
+120: AdditiveExpression -> Term . MoreTerm lookahead: <=
+120: AdditiveExpression -> Term . MoreTerm lookahead: ;
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: ;
+122: MoreTerm -> . + Term MoreTerm lookahead: ;
+123: MoreTerm -> . - Term MoreTerm lookahead: ;
+
+I51:
+130: Term -> Factor . MoreFactor lookahead: +
+130: Term -> Factor . MoreFactor lookahead: -
+130: Term -> Factor . MoreFactor lookahead: ==
+130: Term -> Factor . MoreFactor lookahead: !=
+130: Term -> Factor . MoreFactor lookahead: >
+130: Term -> Factor . MoreFactor lookahead: <
+130: Term -> Factor . MoreFactor lookahead: >=
+130: Term -> Factor . MoreFactor lookahead: <=
+130: Term -> Factor . MoreFactor lookahead: ;
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: ;
+132: MoreFactor -> . * Factor MoreFactor lookahead: ;
+133: MoreFactor -> . / Factor MoreFactor lookahead: ;
+
+I52:
+142: Factor -> NUM . lookahead: *
+142: Factor -> NUM . lookahead: /
+142: Factor -> NUM . lookahead: +
+142: Factor -> NUM . lookahead: -
+142: Factor -> NUM . lookahead: ==
+142: Factor -> NUM . lookahead: !=
+142: Factor -> NUM . lookahead: >
+142: Factor -> NUM . lookahead: <
+142: Factor -> NUM . lookahead: >=
+142: Factor -> NUM . lookahead: <=
+142: Factor -> NUM . lookahead: ;
+
+I53:
+060: AssignmentStatement -> ID = . Expression ; lookahead: id
+060: AssignmentStatement -> ID = . Expression ; lookahead: if
+060: AssignmentStatement -> ID = . Expression ; lookahead: while
+060: AssignmentStatement -> ID = . Expression ; lookahead: return
+060: AssignmentStatement -> ID = . Expression ; lookahead: }
+100: Expression -> . AdditiveExpression MoreExpression lookahead: ;
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: ;
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I54:
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: #
+
+I55:
+046: StatementList -> Statement StatementList . lookahead: }
+
+I56:
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: id
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: if
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: while
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: return
+044: MoreInternalDeclaration -> InternalVariableDeclaration MoreInternalDeclaration . lookahead: }
+
+I57:
+030: ID -> id . lookahead: *
+030: ID -> id . lookahead: /
+030: ID -> id . lookahead: +
+030: ID -> id . lookahead: -
+030: ID -> id . lookahead: ==
+030: ID -> id . lookahead: !=
+030: ID -> id . lookahead: >
+030: ID -> id . lookahead: <
+030: ID -> id . lookahead: >=
+030: ID -> id . lookahead: <=
+030: ID -> id . lookahead: )
+
+I58:
+150: NUM -> num . lookahead: *
+150: NUM -> num . lookahead: /
+150: NUM -> num . lookahead: +
+150: NUM -> num . lookahead: -
+150: NUM -> num . lookahead: ==
+150: NUM -> num . lookahead: !=
+150: NUM -> num . lookahead: >
+150: NUM -> num . lookahead: <
+150: NUM -> num . lookahead: >=
+150: NUM -> num . lookahead: <=
+150: NUM -> num . lookahead: )
+
+I59:
+140: Factor -> ( . Expression ) lookahead: *
+140: Factor -> ( . Expression ) lookahead: /
+140: Factor -> ( . Expression ) lookahead: +
+140: Factor -> ( . Expression ) lookahead: -
+140: Factor -> ( . Expression ) lookahead: ==
+140: Factor -> ( . Expression ) lookahead: !=
+140: Factor -> ( . Expression ) lookahead: >
+140: Factor -> ( . Expression ) lookahead: <
+140: Factor -> ( . Expression ) lookahead: >=
+140: Factor -> ( . Expression ) lookahead: <=
+140: Factor -> ( . Expression ) lookahead: )
+100: Expression -> . AdditiveExpression MoreExpression lookahead: )
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I60:
+141: Factor -> ID . lookahead: *
+141: Factor -> ID . lookahead: /
+141: Factor -> ID . lookahead: +
+141: Factor -> ID . lookahead: -
+141: Factor -> ID . lookahead: ==
+141: Factor -> ID . lookahead: !=
+141: Factor -> ID . lookahead: >
+141: Factor -> ID . lookahead: <
+141: Factor -> ID . lookahead: >=
+141: Factor -> ID . lookahead: <=
+141: Factor -> ID . lookahead: )
+
+I61:
+070: IfStatement -> if ( Expression . ) StatementBlock lookahead: id
+071: IfStatement -> if ( Expression . ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> if ( Expression . ) StatementBlock lookahead: if
+071: IfStatement -> if ( Expression . ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> if ( Expression . ) StatementBlock lookahead: while
+071: IfStatement -> if ( Expression . ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> if ( Expression . ) StatementBlock lookahead: return
+071: IfStatement -> if ( Expression . ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> if ( Expression . ) StatementBlock lookahead: }
+071: IfStatement -> if ( Expression . ) StatementBlock else StatementBlock lookahead: }
+
+I62:
+100: Expression -> AdditiveExpression . MoreExpression lookahead: )
+101: MoreExpression -> . lookahead: )
+102: MoreExpression -> . OP AdditiveExpression MoreExpression lookahead: )
+110: OP -> . == lookahead: (
+110: OP -> . == lookahead: id
+110: OP -> . == lookahead: num
+111: OP -> . != lookahead: (
+111: OP -> . != lookahead: id
+111: OP -> . != lookahead: num
+112: OP -> . > lookahead: (
+112: OP -> . > lookahead: id
+112: OP -> . > lookahead: num
+113: OP -> . < lookahead: (
+113: OP -> . < lookahead: id
+113: OP -> . < lookahead: num
+114: OP -> . >= lookahead: (
+114: OP -> . >= lookahead: id
+114: OP -> . >= lookahead: num
+115: OP -> . <= lookahead: (
+115: OP -> . <= lookahead: id
+115: OP -> . <= lookahead: num
+
+I63:
+120: AdditiveExpression -> Term . MoreTerm lookahead: ==
+120: AdditiveExpression -> Term . MoreTerm lookahead: !=
+120: AdditiveExpression -> Term . MoreTerm lookahead: >
+120: AdditiveExpression -> Term . MoreTerm lookahead: <
+120: AdditiveExpression -> Term . MoreTerm lookahead: >=
+120: AdditiveExpression -> Term . MoreTerm lookahead: <=
+120: AdditiveExpression -> Term . MoreTerm lookahead: )
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: )
+122: MoreTerm -> . + Term MoreTerm lookahead: )
+123: MoreTerm -> . - Term MoreTerm lookahead: )
+
+I64:
+130: Term -> Factor . MoreFactor lookahead: +
+130: Term -> Factor . MoreFactor lookahead: -
+130: Term -> Factor . MoreFactor lookahead: ==
+130: Term -> Factor . MoreFactor lookahead: !=
+130: Term -> Factor . MoreFactor lookahead: >
+130: Term -> Factor . MoreFactor lookahead: <
+130: Term -> Factor . MoreFactor lookahead: >=
+130: Term -> Factor . MoreFactor lookahead: <=
+130: Term -> Factor . MoreFactor lookahead: )
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: )
+132: MoreFactor -> . * Factor MoreFactor lookahead: )
+133: MoreFactor -> . / Factor MoreFactor lookahead: )
+
+I65:
+142: Factor -> NUM . lookahead: *
+142: Factor -> NUM . lookahead: /
+142: Factor -> NUM . lookahead: +
+142: Factor -> NUM . lookahead: -
+142: Factor -> NUM . lookahead: ==
+142: Factor -> NUM . lookahead: !=
+142: Factor -> NUM . lookahead: >
+142: Factor -> NUM . lookahead: <
+142: Factor -> NUM . lookahead: >=
+142: Factor -> NUM . lookahead: <=
+142: Factor -> NUM . lookahead: )
+
+I66:
+080: WhileStatement -> while ( Expression . ) StatementBlock lookahead: id
+080: WhileStatement -> while ( Expression . ) StatementBlock lookahead: if
+080: WhileStatement -> while ( Expression . ) StatementBlock lookahead: while
+080: WhileStatement -> while ( Expression . ) StatementBlock lookahead: return
+080: WhileStatement -> while ( Expression . ) StatementBlock lookahead: }
+
+I67:
+140: Factor -> ( Expression . ) lookahead: *
+140: Factor -> ( Expression . ) lookahead: /
+140: Factor -> ( Expression . ) lookahead: +
+140: Factor -> ( Expression . ) lookahead: -
+140: Factor -> ( Expression . ) lookahead: ==
+140: Factor -> ( Expression . ) lookahead: !=
+140: Factor -> ( Expression . ) lookahead: >
+140: Factor -> ( Expression . ) lookahead: <
+140: Factor -> ( Expression . ) lookahead: >=
+140: Factor -> ( Expression . ) lookahead: <=
+140: Factor -> ( Expression . ) lookahead: ;
+
+I68:
+090: ReturnStatement -> return Expression ; . lookahead: id
+090: ReturnStatement -> return Expression ; . lookahead: if
+090: ReturnStatement -> return Expression ; . lookahead: while
+090: ReturnStatement -> return Expression ; . lookahead: return
+090: ReturnStatement -> return Expression ; . lookahead: }
+
+I69:
+113: OP -> < . lookahead: (
+113: OP -> < . lookahead: id
+113: OP -> < . lookahead: num
+
+I70:
+112: OP -> > . lookahead: (
+112: OP -> > . lookahead: id
+112: OP -> > . lookahead: num
+
+I71:
+115: OP -> <= . lookahead: (
+115: OP -> <= . lookahead: id
+115: OP -> <= . lookahead: num
+
+I72:
+114: OP -> >= . lookahead: (
+114: OP -> >= . lookahead: id
+114: OP -> >= . lookahead: num
+
+I73:
+110: OP -> == . lookahead: (
+110: OP -> == . lookahead: id
+110: OP -> == . lookahead: num
+
+I74:
+111: OP -> != . lookahead: (
+111: OP -> != . lookahead: id
+111: OP -> != . lookahead: num
+
+I75:
+100: Expression -> AdditiveExpression MoreExpression . lookahead: ;
+
+I76:
+102: MoreExpression -> OP . AdditiveExpression MoreExpression lookahead: ;
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: ;
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I77:
+122: MoreTerm -> + . Term MoreTerm lookahead: ==
+122: MoreTerm -> + . Term MoreTerm lookahead: !=
+122: MoreTerm -> + . Term MoreTerm lookahead: >
+122: MoreTerm -> + . Term MoreTerm lookahead: <
+122: MoreTerm -> + . Term MoreTerm lookahead: >=
+122: MoreTerm -> + . Term MoreTerm lookahead: <=
+122: MoreTerm -> + . Term MoreTerm lookahead: ;
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I78:
+123: MoreTerm -> - . Term MoreTerm lookahead: ==
+123: MoreTerm -> - . Term MoreTerm lookahead: !=
+123: MoreTerm -> - . Term MoreTerm lookahead: >
+123: MoreTerm -> - . Term MoreTerm lookahead: <
+123: MoreTerm -> - . Term MoreTerm lookahead: >=
+123: MoreTerm -> - . Term MoreTerm lookahead: <=
+123: MoreTerm -> - . Term MoreTerm lookahead: ;
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I79:
+120: AdditiveExpression -> Term MoreTerm . lookahead: ==
+120: AdditiveExpression -> Term MoreTerm . lookahead: !=
+120: AdditiveExpression -> Term MoreTerm . lookahead: >
+120: AdditiveExpression -> Term MoreTerm . lookahead: <
+120: AdditiveExpression -> Term MoreTerm . lookahead: >=
+120: AdditiveExpression -> Term MoreTerm . lookahead: <=
+120: AdditiveExpression -> Term MoreTerm . lookahead: ;
+
+I80:
+132: MoreFactor -> * . Factor MoreFactor lookahead: +
+132: MoreFactor -> * . Factor MoreFactor lookahead: -
+132: MoreFactor -> * . Factor MoreFactor lookahead: ==
+132: MoreFactor -> * . Factor MoreFactor lookahead: !=
+132: MoreFactor -> * . Factor MoreFactor lookahead: >
+132: MoreFactor -> * . Factor MoreFactor lookahead: <
+132: MoreFactor -> * . Factor MoreFactor lookahead: >=
+132: MoreFactor -> * . Factor MoreFactor lookahead: <=
+132: MoreFactor -> * . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I81:
+133: MoreFactor -> / . Factor MoreFactor lookahead: +
+133: MoreFactor -> / . Factor MoreFactor lookahead: -
+133: MoreFactor -> / . Factor MoreFactor lookahead: ==
+133: MoreFactor -> / . Factor MoreFactor lookahead: !=
+133: MoreFactor -> / . Factor MoreFactor lookahead: >
+133: MoreFactor -> / . Factor MoreFactor lookahead: <
+133: MoreFactor -> / . Factor MoreFactor lookahead: >=
+133: MoreFactor -> / . Factor MoreFactor lookahead: <=
+133: MoreFactor -> / . Factor MoreFactor lookahead: ;
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: ;
+141: Factor -> . ID lookahead: ;
+142: Factor -> . NUM lookahead: ;
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: ;
+150: NUM -> . num lookahead: ;
+
+I82:
+130: Term -> Factor MoreFactor . lookahead: +
+130: Term -> Factor MoreFactor . lookahead: -
+130: Term -> Factor MoreFactor . lookahead: ==
+130: Term -> Factor MoreFactor . lookahead: !=
+130: Term -> Factor MoreFactor . lookahead: >
+130: Term -> Factor MoreFactor . lookahead: <
+130: Term -> Factor MoreFactor . lookahead: >=
+130: Term -> Factor MoreFactor . lookahead: <=
+130: Term -> Factor MoreFactor . lookahead: ;
+
+I83:
+060: AssignmentStatement -> ID = Expression . ; lookahead: id
+060: AssignmentStatement -> ID = Expression . ; lookahead: if
+060: AssignmentStatement -> ID = Expression . ; lookahead: while
+060: AssignmentStatement -> ID = Expression . ; lookahead: return
+060: AssignmentStatement -> ID = Expression . ; lookahead: }
+
+I84:
+140: Factor -> ( Expression . ) lookahead: *
+140: Factor -> ( Expression . ) lookahead: /
+140: Factor -> ( Expression . ) lookahead: +
+140: Factor -> ( Expression . ) lookahead: -
+140: Factor -> ( Expression . ) lookahead: ==
+140: Factor -> ( Expression . ) lookahead: !=
+140: Factor -> ( Expression . ) lookahead: >
+140: Factor -> ( Expression . ) lookahead: <
+140: Factor -> ( Expression . ) lookahead: >=
+140: Factor -> ( Expression . ) lookahead: <=
+140: Factor -> ( Expression . ) lookahead: )
+
+I85:
+070: IfStatement -> if ( Expression ) . StatementBlock lookahead: id
+071: IfStatement -> if ( Expression ) . StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> if ( Expression ) . StatementBlock lookahead: if
+071: IfStatement -> if ( Expression ) . StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> if ( Expression ) . StatementBlock lookahead: while
+071: IfStatement -> if ( Expression ) . StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> if ( Expression ) . StatementBlock lookahead: return
+071: IfStatement -> if ( Expression ) . StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> if ( Expression ) . StatementBlock lookahead: }
+071: IfStatement -> if ( Expression ) . StatementBlock else StatementBlock lookahead: }
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: id
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: else
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: if
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: while
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: return
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: }
+
+I86:
+100: Expression -> AdditiveExpression MoreExpression . lookahead: )
+
+I87:
+102: MoreExpression -> OP . AdditiveExpression MoreExpression lookahead: )
+120: AdditiveExpression -> . Term MoreTerm lookahead: ==
+120: AdditiveExpression -> . Term MoreTerm lookahead: !=
+120: AdditiveExpression -> . Term MoreTerm lookahead: >
+120: AdditiveExpression -> . Term MoreTerm lookahead: <
+120: AdditiveExpression -> . Term MoreTerm lookahead: >=
+120: AdditiveExpression -> . Term MoreTerm lookahead: <=
+120: AdditiveExpression -> . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I88:
+122: MoreTerm -> + . Term MoreTerm lookahead: ==
+122: MoreTerm -> + . Term MoreTerm lookahead: !=
+122: MoreTerm -> + . Term MoreTerm lookahead: >
+122: MoreTerm -> + . Term MoreTerm lookahead: <
+122: MoreTerm -> + . Term MoreTerm lookahead: >=
+122: MoreTerm -> + . Term MoreTerm lookahead: <=
+122: MoreTerm -> + . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I89:
+123: MoreTerm -> - . Term MoreTerm lookahead: ==
+123: MoreTerm -> - . Term MoreTerm lookahead: !=
+123: MoreTerm -> - . Term MoreTerm lookahead: >
+123: MoreTerm -> - . Term MoreTerm lookahead: <
+123: MoreTerm -> - . Term MoreTerm lookahead: >=
+123: MoreTerm -> - . Term MoreTerm lookahead: <=
+123: MoreTerm -> - . Term MoreTerm lookahead: )
+130: Term -> . Factor MoreFactor lookahead: +
+130: Term -> . Factor MoreFactor lookahead: -
+130: Term -> . Factor MoreFactor lookahead: ==
+130: Term -> . Factor MoreFactor lookahead: !=
+130: Term -> . Factor MoreFactor lookahead: >
+130: Term -> . Factor MoreFactor lookahead: <
+130: Term -> . Factor MoreFactor lookahead: >=
+130: Term -> . Factor MoreFactor lookahead: <=
+130: Term -> . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I90:
+120: AdditiveExpression -> Term MoreTerm . lookahead: ==
+120: AdditiveExpression -> Term MoreTerm . lookahead: !=
+120: AdditiveExpression -> Term MoreTerm . lookahead: >
+120: AdditiveExpression -> Term MoreTerm . lookahead: <
+120: AdditiveExpression -> Term MoreTerm . lookahead: >=
+120: AdditiveExpression -> Term MoreTerm . lookahead: <=
+120: AdditiveExpression -> Term MoreTerm . lookahead: )
+
+I91:
+132: MoreFactor -> * . Factor MoreFactor lookahead: +
+132: MoreFactor -> * . Factor MoreFactor lookahead: -
+132: MoreFactor -> * . Factor MoreFactor lookahead: ==
+132: MoreFactor -> * . Factor MoreFactor lookahead: !=
+132: MoreFactor -> * . Factor MoreFactor lookahead: >
+132: MoreFactor -> * . Factor MoreFactor lookahead: <
+132: MoreFactor -> * . Factor MoreFactor lookahead: >=
+132: MoreFactor -> * . Factor MoreFactor lookahead: <=
+132: MoreFactor -> * . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I92:
+133: MoreFactor -> / . Factor MoreFactor lookahead: +
+133: MoreFactor -> / . Factor MoreFactor lookahead: -
+133: MoreFactor -> / . Factor MoreFactor lookahead: ==
+133: MoreFactor -> / . Factor MoreFactor lookahead: !=
+133: MoreFactor -> / . Factor MoreFactor lookahead: >
+133: MoreFactor -> / . Factor MoreFactor lookahead: <
+133: MoreFactor -> / . Factor MoreFactor lookahead: >=
+133: MoreFactor -> / . Factor MoreFactor lookahead: <=
+133: MoreFactor -> / . Factor MoreFactor lookahead: )
+140: Factor -> . ( Expression ) lookahead: *
+140: Factor -> . ( Expression ) lookahead: /
+140: Factor -> . ( Expression ) lookahead: +
+141: Factor -> . ID lookahead: *
+141: Factor -> . ID lookahead: /
+141: Factor -> . ID lookahead: +
+142: Factor -> . NUM lookahead: *
+142: Factor -> . NUM lookahead: /
+142: Factor -> . NUM lookahead: +
+140: Factor -> . ( Expression ) lookahead: -
+141: Factor -> . ID lookahead: -
+142: Factor -> . NUM lookahead: -
+140: Factor -> . ( Expression ) lookahead: ==
+141: Factor -> . ID lookahead: ==
+142: Factor -> . NUM lookahead: ==
+140: Factor -> . ( Expression ) lookahead: !=
+141: Factor -> . ID lookahead: !=
+142: Factor -> . NUM lookahead: !=
+140: Factor -> . ( Expression ) lookahead: >
+141: Factor -> . ID lookahead: >
+142: Factor -> . NUM lookahead: >
+140: Factor -> . ( Expression ) lookahead: <
+141: Factor -> . ID lookahead: <
+142: Factor -> . NUM lookahead: <
+140: Factor -> . ( Expression ) lookahead: >=
+141: Factor -> . ID lookahead: >=
+142: Factor -> . NUM lookahead: >=
+140: Factor -> . ( Expression ) lookahead: <=
+141: Factor -> . ID lookahead: <=
+142: Factor -> . NUM lookahead: <=
+140: Factor -> . ( Expression ) lookahead: )
+141: Factor -> . ID lookahead: )
+142: Factor -> . NUM lookahead: )
+030: ID -> . id lookahead: *
+030: ID -> . id lookahead: /
+030: ID -> . id lookahead: +
+150: NUM -> . num lookahead: *
+150: NUM -> . num lookahead: /
+150: NUM -> . num lookahead: +
+030: ID -> . id lookahead: -
+150: NUM -> . num lookahead: -
+030: ID -> . id lookahead: ==
+150: NUM -> . num lookahead: ==
+030: ID -> . id lookahead: !=
+150: NUM -> . num lookahead: !=
+030: ID -> . id lookahead: >
+150: NUM -> . num lookahead: >
+030: ID -> . id lookahead: <
+150: NUM -> . num lookahead: <
+030: ID -> . id lookahead: >=
+150: NUM -> . num lookahead: >=
+030: ID -> . id lookahead: <=
+150: NUM -> . num lookahead: <=
+030: ID -> . id lookahead: )
+150: NUM -> . num lookahead: )
+
+I93:
+130: Term -> Factor MoreFactor . lookahead: +
+130: Term -> Factor MoreFactor . lookahead: -
+130: Term -> Factor MoreFactor . lookahead: ==
+130: Term -> Factor MoreFactor . lookahead: !=
+130: Term -> Factor MoreFactor . lookahead: >
+130: Term -> Factor MoreFactor . lookahead: <
+130: Term -> Factor MoreFactor . lookahead: >=
+130: Term -> Factor MoreFactor . lookahead: <=
+130: Term -> Factor MoreFactor . lookahead: )
+
+I94:
+080: WhileStatement -> while ( Expression ) . StatementBlock lookahead: id
+080: WhileStatement -> while ( Expression ) . StatementBlock lookahead: if
+080: WhileStatement -> while ( Expression ) . StatementBlock lookahead: while
+080: WhileStatement -> while ( Expression ) . StatementBlock lookahead: return
+080: WhileStatement -> while ( Expression ) . StatementBlock lookahead: }
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: id
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: if
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: while
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: return
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: }
+
+I95:
+140: Factor -> ( Expression ) . lookahead: *
+140: Factor -> ( Expression ) . lookahead: /
+140: Factor -> ( Expression ) . lookahead: +
+140: Factor -> ( Expression ) . lookahead: -
+140: Factor -> ( Expression ) . lookahead: ==
+140: Factor -> ( Expression ) . lookahead: !=
+140: Factor -> ( Expression ) . lookahead: >
+140: Factor -> ( Expression ) . lookahead: <
+140: Factor -> ( Expression ) . lookahead: >=
+140: Factor -> ( Expression ) . lookahead: <=
+140: Factor -> ( Expression ) . lookahead: ;
+
+I96:
+102: MoreExpression -> OP AdditiveExpression . MoreExpression lookahead: ;
+101: MoreExpression -> . lookahead: ;
+102: MoreExpression -> . OP AdditiveExpression MoreExpression lookahead: ;
+110: OP -> . == lookahead: (
+110: OP -> . == lookahead: id
+110: OP -> . == lookahead: num
+111: OP -> . != lookahead: (
+111: OP -> . != lookahead: id
+111: OP -> . != lookahead: num
+112: OP -> . > lookahead: (
+112: OP -> . > lookahead: id
+112: OP -> . > lookahead: num
+113: OP -> . < lookahead: (
+113: OP -> . < lookahead: id
+113: OP -> . < lookahead: num
+114: OP -> . >= lookahead: (
+114: OP -> . >= lookahead: id
+114: OP -> . >= lookahead: num
+115: OP -> . <= lookahead: (
+115: OP -> . <= lookahead: id
+115: OP -> . <= lookahead: num
+
+I97:
+122: MoreTerm -> + Term . MoreTerm lookahead: ==
+122: MoreTerm -> + Term . MoreTerm lookahead: !=
+122: MoreTerm -> + Term . MoreTerm lookahead: >
+122: MoreTerm -> + Term . MoreTerm lookahead: <
+122: MoreTerm -> + Term . MoreTerm lookahead: >=
+122: MoreTerm -> + Term . MoreTerm lookahead: <=
+122: MoreTerm -> + Term . MoreTerm lookahead: ;
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: ;
+122: MoreTerm -> . + Term MoreTerm lookahead: ;
+123: MoreTerm -> . - Term MoreTerm lookahead: ;
+
+I98:
+123: MoreTerm -> - Term . MoreTerm lookahead: ==
+123: MoreTerm -> - Term . MoreTerm lookahead: !=
+123: MoreTerm -> - Term . MoreTerm lookahead: >
+123: MoreTerm -> - Term . MoreTerm lookahead: <
+123: MoreTerm -> - Term . MoreTerm lookahead: >=
+123: MoreTerm -> - Term . MoreTerm lookahead: <=
+123: MoreTerm -> - Term . MoreTerm lookahead: ;
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: ;
+122: MoreTerm -> . + Term MoreTerm lookahead: ;
+123: MoreTerm -> . - Term MoreTerm lookahead: ;
+
+I99:
+132: MoreFactor -> * Factor . MoreFactor lookahead: +
+132: MoreFactor -> * Factor . MoreFactor lookahead: -
+132: MoreFactor -> * Factor . MoreFactor lookahead: ==
+132: MoreFactor -> * Factor . MoreFactor lookahead: !=
+132: MoreFactor -> * Factor . MoreFactor lookahead: >
+132: MoreFactor -> * Factor . MoreFactor lookahead: <
+132: MoreFactor -> * Factor . MoreFactor lookahead: >=
+132: MoreFactor -> * Factor . MoreFactor lookahead: <=
+132: MoreFactor -> * Factor . MoreFactor lookahead: ;
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: ;
+132: MoreFactor -> . * Factor MoreFactor lookahead: ;
+133: MoreFactor -> . / Factor MoreFactor lookahead: ;
+
+I100:
+133: MoreFactor -> / Factor . MoreFactor lookahead: +
+133: MoreFactor -> / Factor . MoreFactor lookahead: -
+133: MoreFactor -> / Factor . MoreFactor lookahead: ==
+133: MoreFactor -> / Factor . MoreFactor lookahead: !=
+133: MoreFactor -> / Factor . MoreFactor lookahead: >
+133: MoreFactor -> / Factor . MoreFactor lookahead: <
+133: MoreFactor -> / Factor . MoreFactor lookahead: >=
+133: MoreFactor -> / Factor . MoreFactor lookahead: <=
+133: MoreFactor -> / Factor . MoreFactor lookahead: ;
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: ;
+132: MoreFactor -> . * Factor MoreFactor lookahead: ;
+133: MoreFactor -> . / Factor MoreFactor lookahead: ;
+
+I101:
+060: AssignmentStatement -> ID = Expression ; . lookahead: id
+060: AssignmentStatement -> ID = Expression ; . lookahead: if
+060: AssignmentStatement -> ID = Expression ; . lookahead: while
+060: AssignmentStatement -> ID = Expression ; . lookahead: return
+060: AssignmentStatement -> ID = Expression ; . lookahead: }
+
+I102:
+140: Factor -> ( Expression ) . lookahead: *
+140: Factor -> ( Expression ) . lookahead: /
+140: Factor -> ( Expression ) . lookahead: +
+140: Factor -> ( Expression ) . lookahead: -
+140: Factor -> ( Expression ) . lookahead: ==
+140: Factor -> ( Expression ) . lookahead: !=
+140: Factor -> ( Expression ) . lookahead: >
+140: Factor -> ( Expression ) . lookahead: <
+140: Factor -> ( Expression ) . lookahead: >=
+140: Factor -> ( Expression ) . lookahead: <=
+140: Factor -> ( Expression ) . lookahead: )
+
+I103:
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: id
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: else
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: if
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: while
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: return
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: }
+041: InternalDeclaration -> . lookahead: id
+041: InternalDeclaration -> . lookahead: if
+041: InternalDeclaration -> . lookahead: while
+041: InternalDeclaration -> . lookahead: return
+041: InternalDeclaration -> . lookahead: }
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: id
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: if
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: while
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: return
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: }
+045: InternalVariableDeclaration -> . int ID ; lookahead: int
+045: InternalVariableDeclaration -> . int ID ; lookahead: id
+045: InternalVariableDeclaration -> . int ID ; lookahead: if
+045: InternalVariableDeclaration -> . int ID ; lookahead: while
+045: InternalVariableDeclaration -> . int ID ; lookahead: return
+045: InternalVariableDeclaration -> . int ID ; lookahead: }
+
+I104:
+070: IfStatement -> if ( Expression ) StatementBlock . lookahead: id
+071: IfStatement -> if ( Expression ) StatementBlock . else StatementBlock lookahead: id
+070: IfStatement -> if ( Expression ) StatementBlock . lookahead: if
+071: IfStatement -> if ( Expression ) StatementBlock . else StatementBlock lookahead: if
+070: IfStatement -> if ( Expression ) StatementBlock . lookahead: while
+071: IfStatement -> if ( Expression ) StatementBlock . else StatementBlock lookahead: while
+070: IfStatement -> if ( Expression ) StatementBlock . lookahead: return
+071: IfStatement -> if ( Expression ) StatementBlock . else StatementBlock lookahead: return
+070: IfStatement -> if ( Expression ) StatementBlock . lookahead: }
+071: IfStatement -> if ( Expression ) StatementBlock . else StatementBlock lookahead: }
+
+I105:
+102: MoreExpression -> OP AdditiveExpression . MoreExpression lookahead: )
+101: MoreExpression -> . lookahead: )
+102: MoreExpression -> . OP AdditiveExpression MoreExpression lookahead: )
+110: OP -> . == lookahead: (
+110: OP -> . == lookahead: id
+110: OP -> . == lookahead: num
+111: OP -> . != lookahead: (
+111: OP -> . != lookahead: id
+111: OP -> . != lookahead: num
+112: OP -> . > lookahead: (
+112: OP -> . > lookahead: id
+112: OP -> . > lookahead: num
+113: OP -> . < lookahead: (
+113: OP -> . < lookahead: id
+113: OP -> . < lookahead: num
+114: OP -> . >= lookahead: (
+114: OP -> . >= lookahead: id
+114: OP -> . >= lookahead: num
+115: OP -> . <= lookahead: (
+115: OP -> . <= lookahead: id
+115: OP -> . <= lookahead: num
+
+I106:
+122: MoreTerm -> + Term . MoreTerm lookahead: ==
+122: MoreTerm -> + Term . MoreTerm lookahead: !=
+122: MoreTerm -> + Term . MoreTerm lookahead: >
+122: MoreTerm -> + Term . MoreTerm lookahead: <
+122: MoreTerm -> + Term . MoreTerm lookahead: >=
+122: MoreTerm -> + Term . MoreTerm lookahead: <=
+122: MoreTerm -> + Term . MoreTerm lookahead: )
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: )
+122: MoreTerm -> . + Term MoreTerm lookahead: )
+123: MoreTerm -> . - Term MoreTerm lookahead: )
+
+I107:
+123: MoreTerm -> - Term . MoreTerm lookahead: ==
+123: MoreTerm -> - Term . MoreTerm lookahead: !=
+123: MoreTerm -> - Term . MoreTerm lookahead: >
+123: MoreTerm -> - Term . MoreTerm lookahead: <
+123: MoreTerm -> - Term . MoreTerm lookahead: >=
+123: MoreTerm -> - Term . MoreTerm lookahead: <=
+123: MoreTerm -> - Term . MoreTerm lookahead: )
+121: MoreTerm -> . lookahead: ==
+122: MoreTerm -> . + Term MoreTerm lookahead: ==
+123: MoreTerm -> . - Term MoreTerm lookahead: ==
+121: MoreTerm -> . lookahead: !=
+122: MoreTerm -> . + Term MoreTerm lookahead: !=
+123: MoreTerm -> . - Term MoreTerm lookahead: !=
+121: MoreTerm -> . lookahead: >
+122: MoreTerm -> . + Term MoreTerm lookahead: >
+123: MoreTerm -> . - Term MoreTerm lookahead: >
+121: MoreTerm -> . lookahead: <
+122: MoreTerm -> . + Term MoreTerm lookahead: <
+123: MoreTerm -> . - Term MoreTerm lookahead: <
+121: MoreTerm -> . lookahead: >=
+122: MoreTerm -> . + Term MoreTerm lookahead: >=
+123: MoreTerm -> . - Term MoreTerm lookahead: >=
+121: MoreTerm -> . lookahead: <=
+122: MoreTerm -> . + Term MoreTerm lookahead: <=
+123: MoreTerm -> . - Term MoreTerm lookahead: <=
+121: MoreTerm -> . lookahead: )
+122: MoreTerm -> . + Term MoreTerm lookahead: )
+123: MoreTerm -> . - Term MoreTerm lookahead: )
+
+I108:
+132: MoreFactor -> * Factor . MoreFactor lookahead: +
+132: MoreFactor -> * Factor . MoreFactor lookahead: -
+132: MoreFactor -> * Factor . MoreFactor lookahead: ==
+132: MoreFactor -> * Factor . MoreFactor lookahead: !=
+132: MoreFactor -> * Factor . MoreFactor lookahead: >
+132: MoreFactor -> * Factor . MoreFactor lookahead: <
+132: MoreFactor -> * Factor . MoreFactor lookahead: >=
+132: MoreFactor -> * Factor . MoreFactor lookahead: <=
+132: MoreFactor -> * Factor . MoreFactor lookahead: )
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: )
+132: MoreFactor -> . * Factor MoreFactor lookahead: )
+133: MoreFactor -> . / Factor MoreFactor lookahead: )
+
+I109:
+133: MoreFactor -> / Factor . MoreFactor lookahead: +
+133: MoreFactor -> / Factor . MoreFactor lookahead: -
+133: MoreFactor -> / Factor . MoreFactor lookahead: ==
+133: MoreFactor -> / Factor . MoreFactor lookahead: !=
+133: MoreFactor -> / Factor . MoreFactor lookahead: >
+133: MoreFactor -> / Factor . MoreFactor lookahead: <
+133: MoreFactor -> / Factor . MoreFactor lookahead: >=
+133: MoreFactor -> / Factor . MoreFactor lookahead: <=
+133: MoreFactor -> / Factor . MoreFactor lookahead: )
+131: MoreFactor -> . lookahead: +
+132: MoreFactor -> . * Factor MoreFactor lookahead: +
+133: MoreFactor -> . / Factor MoreFactor lookahead: +
+131: MoreFactor -> . lookahead: -
+132: MoreFactor -> . * Factor MoreFactor lookahead: -
+133: MoreFactor -> . / Factor MoreFactor lookahead: -
+131: MoreFactor -> . lookahead: ==
+132: MoreFactor -> . * Factor MoreFactor lookahead: ==
+133: MoreFactor -> . / Factor MoreFactor lookahead: ==
+131: MoreFactor -> . lookahead: !=
+132: MoreFactor -> . * Factor MoreFactor lookahead: !=
+133: MoreFactor -> . / Factor MoreFactor lookahead: !=
+131: MoreFactor -> . lookahead: >
+132: MoreFactor -> . * Factor MoreFactor lookahead: >
+133: MoreFactor -> . / Factor MoreFactor lookahead: >
+131: MoreFactor -> . lookahead: <
+132: MoreFactor -> . * Factor MoreFactor lookahead: <
+133: MoreFactor -> . / Factor MoreFactor lookahead: <
+131: MoreFactor -> . lookahead: >=
+132: MoreFactor -> . * Factor MoreFactor lookahead: >=
+133: MoreFactor -> . / Factor MoreFactor lookahead: >=
+131: MoreFactor -> . lookahead: <=
+132: MoreFactor -> . * Factor MoreFactor lookahead: <=
+133: MoreFactor -> . / Factor MoreFactor lookahead: <=
+131: MoreFactor -> . lookahead: )
+132: MoreFactor -> . * Factor MoreFactor lookahead: )
+133: MoreFactor -> . / Factor MoreFactor lookahead: )
+
+I110:
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: id
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: if
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: while
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: return
+040: StatementBlock -> { . InternalDeclaration StatementList } lookahead: }
+041: InternalDeclaration -> . lookahead: id
+041: InternalDeclaration -> . lookahead: if
+041: InternalDeclaration -> . lookahead: while
+041: InternalDeclaration -> . lookahead: return
+041: InternalDeclaration -> . lookahead: }
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: id
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: if
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: while
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: return
+042: InternalDeclaration -> . InternalVariableDeclaration MoreInternalDeclaration lookahead: }
+045: InternalVariableDeclaration -> . int ID ; lookahead: int
+045: InternalVariableDeclaration -> . int ID ; lookahead: id
+045: InternalVariableDeclaration -> . int ID ; lookahead: if
+045: InternalVariableDeclaration -> . int ID ; lookahead: while
+045: InternalVariableDeclaration -> . int ID ; lookahead: return
+045: InternalVariableDeclaration -> . int ID ; lookahead: }
+
+I111:
+080: WhileStatement -> while ( Expression ) StatementBlock . lookahead: id
+080: WhileStatement -> while ( Expression ) StatementBlock . lookahead: if
+080: WhileStatement -> while ( Expression ) StatementBlock . lookahead: while
+080: WhileStatement -> while ( Expression ) StatementBlock . lookahead: return
+080: WhileStatement -> while ( Expression ) StatementBlock . lookahead: }
+
+I112:
+102: MoreExpression -> OP AdditiveExpression MoreExpression . lookahead: ;
+
+I113:
+122: MoreTerm -> + Term MoreTerm . lookahead: ==
+122: MoreTerm -> + Term MoreTerm . lookahead: !=
+122: MoreTerm -> + Term MoreTerm . lookahead: >
+122: MoreTerm -> + Term MoreTerm . lookahead: <
+122: MoreTerm -> + Term MoreTerm . lookahead: >=
+122: MoreTerm -> + Term MoreTerm . lookahead: <=
+122: MoreTerm -> + Term MoreTerm . lookahead: ;
+
+I114:
+123: MoreTerm -> - Term MoreTerm . lookahead: ==
+123: MoreTerm -> - Term MoreTerm . lookahead: !=
+123: MoreTerm -> - Term MoreTerm . lookahead: >
+123: MoreTerm -> - Term MoreTerm . lookahead: <
+123: MoreTerm -> - Term MoreTerm . lookahead: >=
+123: MoreTerm -> - Term MoreTerm . lookahead: <=
+123: MoreTerm -> - Term MoreTerm . lookahead: ;
+
+I115:
+132: MoreFactor -> * Factor MoreFactor . lookahead: +
+132: MoreFactor -> * Factor MoreFactor . lookahead: -
+132: MoreFactor -> * Factor MoreFactor . lookahead: ==
+132: MoreFactor -> * Factor MoreFactor . lookahead: !=
+132: MoreFactor -> * Factor MoreFactor . lookahead: >
+132: MoreFactor -> * Factor MoreFactor . lookahead: <
+132: MoreFactor -> * Factor MoreFactor . lookahead: >=
+132: MoreFactor -> * Factor MoreFactor . lookahead: <=
+132: MoreFactor -> * Factor MoreFactor . lookahead: ;
+
+I116:
+133: MoreFactor -> / Factor MoreFactor . lookahead: +
+133: MoreFactor -> / Factor MoreFactor . lookahead: -
+133: MoreFactor -> / Factor MoreFactor . lookahead: ==
+133: MoreFactor -> / Factor MoreFactor . lookahead: !=
+133: MoreFactor -> / Factor MoreFactor . lookahead: >
+133: MoreFactor -> / Factor MoreFactor . lookahead: <
+133: MoreFactor -> / Factor MoreFactor . lookahead: >=
+133: MoreFactor -> / Factor MoreFactor . lookahead: <=
+133: MoreFactor -> / Factor MoreFactor . lookahead: ;
+
+I117:
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: id
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: else
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: if
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: while
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: return
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: }
+046: StatementList -> . Statement StatementList lookahead: }
+047: StatementList -> . lookahead: }
+051: Statement -> . AssignmentStatement lookahead: id
+051: Statement -> . AssignmentStatement lookahead: if
+051: Statement -> . AssignmentStatement lookahead: while
+051: Statement -> . AssignmentStatement lookahead: return
+051: Statement -> . AssignmentStatement lookahead: }
+052: Statement -> . IfStatement lookahead: id
+052: Statement -> . IfStatement lookahead: if
+052: Statement -> . IfStatement lookahead: while
+052: Statement -> . IfStatement lookahead: return
+052: Statement -> . IfStatement lookahead: }
+053: Statement -> . WhileStatement lookahead: id
+053: Statement -> . WhileStatement lookahead: if
+053: Statement -> . WhileStatement lookahead: while
+053: Statement -> . WhileStatement lookahead: return
+053: Statement -> . WhileStatement lookahead: }
+054: Statement -> . ReturnStatement lookahead: id
+054: Statement -> . ReturnStatement lookahead: if
+054: Statement -> . ReturnStatement lookahead: while
+054: Statement -> . ReturnStatement lookahead: return
+054: Statement -> . ReturnStatement lookahead: }
+060: AssignmentStatement -> . ID = Expression ; lookahead: id
+060: AssignmentStatement -> . ID = Expression ; lookahead: if
+060: AssignmentStatement -> . ID = Expression ; lookahead: while
+060: AssignmentStatement -> . ID = Expression ; lookahead: return
+060: AssignmentStatement -> . ID = Expression ; lookahead: }
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: id
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: if
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: while
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: return
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: }
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: }
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: id
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: if
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: while
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: return
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: }
+090: ReturnStatement -> . return Expression ; lookahead: id
+091: ReturnStatement -> . return ; lookahead: id
+090: ReturnStatement -> . return Expression ; lookahead: if
+091: ReturnStatement -> . return ; lookahead: if
+090: ReturnStatement -> . return Expression ; lookahead: while
+091: ReturnStatement -> . return ; lookahead: while
+090: ReturnStatement -> . return Expression ; lookahead: return
+091: ReturnStatement -> . return ; lookahead: return
+090: ReturnStatement -> . return Expression ; lookahead: }
+091: ReturnStatement -> . return ; lookahead: }
+030: ID -> . id lookahead: =
+
+I118:
+071: IfStatement -> if ( Expression ) StatementBlock else . StatementBlock lookahead: id
+071: IfStatement -> if ( Expression ) StatementBlock else . StatementBlock lookahead: if
+071: IfStatement -> if ( Expression ) StatementBlock else . StatementBlock lookahead: while
+071: IfStatement -> if ( Expression ) StatementBlock else . StatementBlock lookahead: return
+071: IfStatement -> if ( Expression ) StatementBlock else . StatementBlock lookahead: }
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: id
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: if
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: while
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: return
+040: StatementBlock -> . { InternalDeclaration StatementList } lookahead: }
+
+I119:
+102: MoreExpression -> OP AdditiveExpression MoreExpression . lookahead: )
+
+I120:
+122: MoreTerm -> + Term MoreTerm . lookahead: ==
+122: MoreTerm -> + Term MoreTerm . lookahead: !=
+122: MoreTerm -> + Term MoreTerm . lookahead: >
+122: MoreTerm -> + Term MoreTerm . lookahead: <
+122: MoreTerm -> + Term MoreTerm . lookahead: >=
+122: MoreTerm -> + Term MoreTerm . lookahead: <=
+122: MoreTerm -> + Term MoreTerm . lookahead: )
+
+I121:
+123: MoreTerm -> - Term MoreTerm . lookahead: ==
+123: MoreTerm -> - Term MoreTerm . lookahead: !=
+123: MoreTerm -> - Term MoreTerm . lookahead: >
+123: MoreTerm -> - Term MoreTerm . lookahead: <
+123: MoreTerm -> - Term MoreTerm . lookahead: >=
+123: MoreTerm -> - Term MoreTerm . lookahead: <=
+123: MoreTerm -> - Term MoreTerm . lookahead: )
+
+I122:
+132: MoreFactor -> * Factor MoreFactor . lookahead: +
+132: MoreFactor -> * Factor MoreFactor . lookahead: -
+132: MoreFactor -> * Factor MoreFactor . lookahead: ==
+132: MoreFactor -> * Factor MoreFactor . lookahead: !=
+132: MoreFactor -> * Factor MoreFactor . lookahead: >
+132: MoreFactor -> * Factor MoreFactor . lookahead: <
+132: MoreFactor -> * Factor MoreFactor . lookahead: >=
+132: MoreFactor -> * Factor MoreFactor . lookahead: <=
+132: MoreFactor -> * Factor MoreFactor . lookahead: )
+
+I123:
+133: MoreFactor -> / Factor MoreFactor . lookahead: +
+133: MoreFactor -> / Factor MoreFactor . lookahead: -
+133: MoreFactor -> / Factor MoreFactor . lookahead: ==
+133: MoreFactor -> / Factor MoreFactor . lookahead: !=
+133: MoreFactor -> / Factor MoreFactor . lookahead: >
+133: MoreFactor -> / Factor MoreFactor . lookahead: <
+133: MoreFactor -> / Factor MoreFactor . lookahead: >=
+133: MoreFactor -> / Factor MoreFactor . lookahead: <=
+133: MoreFactor -> / Factor MoreFactor . lookahead: )
+
+I124:
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: id
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: if
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: while
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: return
+040: StatementBlock -> { InternalDeclaration . StatementList } lookahead: }
+046: StatementList -> . Statement StatementList lookahead: }
+047: StatementList -> . lookahead: }
+051: Statement -> . AssignmentStatement lookahead: id
+051: Statement -> . AssignmentStatement lookahead: if
+051: Statement -> . AssignmentStatement lookahead: while
+051: Statement -> . AssignmentStatement lookahead: return
+051: Statement -> . AssignmentStatement lookahead: }
+052: Statement -> . IfStatement lookahead: id
+052: Statement -> . IfStatement lookahead: if
+052: Statement -> . IfStatement lookahead: while
+052: Statement -> . IfStatement lookahead: return
+052: Statement -> . IfStatement lookahead: }
+053: Statement -> . WhileStatement lookahead: id
+053: Statement -> . WhileStatement lookahead: if
+053: Statement -> . WhileStatement lookahead: while
+053: Statement -> . WhileStatement lookahead: return
+053: Statement -> . WhileStatement lookahead: }
+054: Statement -> . ReturnStatement lookahead: id
+054: Statement -> . ReturnStatement lookahead: if
+054: Statement -> . ReturnStatement lookahead: while
+054: Statement -> . ReturnStatement lookahead: return
+054: Statement -> . ReturnStatement lookahead: }
+060: AssignmentStatement -> . ID = Expression ; lookahead: id
+060: AssignmentStatement -> . ID = Expression ; lookahead: if
+060: AssignmentStatement -> . ID = Expression ; lookahead: while
+060: AssignmentStatement -> . ID = Expression ; lookahead: return
+060: AssignmentStatement -> . ID = Expression ; lookahead: }
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: id
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: id
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: if
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: if
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: while
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: while
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: return
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: return
+070: IfStatement -> . if ( Expression ) StatementBlock lookahead: }
+071: IfStatement -> . if ( Expression ) StatementBlock else StatementBlock lookahead: }
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: id
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: if
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: while
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: return
+080: WhileStatement -> . while ( Expression ) StatementBlock lookahead: }
+090: ReturnStatement -> . return Expression ; lookahead: id
+091: ReturnStatement -> . return ; lookahead: id
+090: ReturnStatement -> . return Expression ; lookahead: if
+091: ReturnStatement -> . return ; lookahead: if
+090: ReturnStatement -> . return Expression ; lookahead: while
+091: ReturnStatement -> . return ; lookahead: while
+090: ReturnStatement -> . return Expression ; lookahead: return
+091: ReturnStatement -> . return ; lookahead: return
+090: ReturnStatement -> . return Expression ; lookahead: }
+091: ReturnStatement -> . return ; lookahead: }
+030: ID -> . id lookahead: =
+
+I125:
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: id
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: else
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: if
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: while
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: return
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: }
+
+I126:
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock . lookahead: id
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock . lookahead: if
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock . lookahead: while
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock . lookahead: return
+071: IfStatement -> if ( Expression ) StatementBlock else StatementBlock . lookahead: }
+
+I127:
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: id
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: if
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: while
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: return
+040: StatementBlock -> { InternalDeclaration StatementList . } lookahead: }
+
+I128:
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: id
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: else
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: if
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: while
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: return
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: }
+
+I129:
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: id
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: if
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: while
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: return
+040: StatementBlock -> { InternalDeclaration StatementList } . lookahead: }
+

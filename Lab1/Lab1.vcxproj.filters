@@ -21,10 +21,20 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SynAnalysis.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LexAnalysis.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SynAnalysis.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="C:\Users\86180\Desktop\BigHW1\Grammar.txt" />
+    <Text Include="C:\Users\86180\Desktop\BigHW1\ItemSet.txt" />
   </ItemGroup>
 </Project>

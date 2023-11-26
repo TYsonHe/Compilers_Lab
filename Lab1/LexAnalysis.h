@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-#include <string>
+#include <vector>
 using namespace std;
 /* 单词编码 */
 enum TokenCode
@@ -59,11 +59,16 @@ enum TokenCode
 	TK_END
 };
 
+/* 词法分析结果 */
+struct LexResult
+{
+	TokenCode code;
+	string token;
+};
+
 class LexAnalysis
 {
-
 public:
-
 	// 构造函数
 	LexAnalysis() = default;
 	// 成员函数
@@ -77,3 +82,5 @@ extern const int MAX;
 extern int row;
 extern string token;
 extern char  keyWord[][7];
+extern vector <LexResult> lexResults;
+extern bool passLex;
